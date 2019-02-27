@@ -65,6 +65,8 @@ cv2.waitKey()
 cv2.destroyAllWindows()
 
 
+np.set_printoptions(threshold=np.nan)
+
 
 np.unique(img)
 np.unique(msk)
