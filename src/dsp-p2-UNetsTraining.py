@@ -17,11 +17,11 @@ import tensorflow as tf
 
 
 dir = "/Users/hemanth/Desktop/MSAI/DataSciencePracticum/Projects/p2/"
-train_folder = dir+"pp_data_train_zero_640x640"
-test_folder = dir+"pp_data_test_zero_640x640"
-masks_folder = dir+"pp_masks_zero_640x640"
-dimX = 640 
-dimY = 640
+train_folder = dir+"pp_data_train_resize_512x512"
+test_folder = dir+"pp_data_test_resize_512x512"
+masks_folder = dir+"pp_masks_resize_512x512"
+dimX = 512
+dimY = 512
 
 
 def get_pp_images(train_folder,masks_folder,mask):
@@ -54,6 +54,20 @@ else:
 X_train = np.array(X_train)
 y_train = np.array(y_train)
 X_test = np.array(X_test)
+
+img = np.squeeze(y_train[90])
+
+print(np.amin(img))
+print(np.unique(img))
+print(np.amax(img))
+#print(stats.describe(img))
+#img[np.where(img > 0.5)] = 2 
+
+print(img.shape)
+np.set_printoptions(threshold=np.nan)
+
+
+
 
 assert X_train.shape == y_train.shape
 assert len(X_train) == len(y_train)

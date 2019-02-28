@@ -8,14 +8,18 @@ import pickle
 #from skimage.io import imread, imshow, imread_collection, concatenate_images
 from skimage.transform import resize
 
-pre_type = 'zero'
-dimX = "640"
-dimY = "640"
-pics = '10'
+pre_type = 'resize'
+dimX = "512"
+dimY = "512"
+pics = '1'
 dir = "/Users/hemanth/Desktop/MSAI/DataSciencePracticum/Projects/p2/"
 
 #https://github.com/dsp-uga/goucher/blob/master/src/preprocessing/preprocessor.py
 #https://github.com/dsp-uga/team-ball/blob/master/src/preprocessing/preprocessor.py
+
+#small_lable = cv2.resize(mask, (mask.shape[1],mask.shape[0]),
+ #                       interpolation=cv2.INTER_NEAREST)
+#small_lable = (np.array(small_lable)).astype('uint8')
 
 
 def zero_padding(input_array, final_dimension = [int(dimX),int(dimY)]):
@@ -39,7 +43,8 @@ for names in train_files:
     if(pre_type == 'zero'):
         mask_imgs = zero_padding(mask_imgs)
     elif(pre_type == 'resize'):
-        mask_imgs = np.expand_dims(resize(mask_imgs, (dimX, dimY), mode='constant', preserve_range=True), axis=-1)
+        mask_imgs = np.array(cv2.resize(mask_imgs, (int(dimX), int(dimY)),interpolation=cv2.INTER_NEAREST)).astype('uint8')
+        mask_imgs = np.expand_dims(mask_imgs, axis=-1)
     
     if not os.path.isdir(dir+"pp_masks_"+pre_type+"_"+dimX+"x"+dimY):
         os.mkdir(dir+"pp_masks_"+pre_type+"_"+dimX+"x"+dimY)
@@ -57,9 +62,11 @@ for names in train_files:
         if(pre_type == 'zero'):
             imgs = zero_padding(imgs)
         elif(pre_type == 'resize'):
-            imgs = np.expand_dims(resize(mask_imgs, (dimX, dimY), mode='constant', preserve_range=True), axis=-1)
+            imgs = np.array(cv2.resize(imgs, (int(dimX), int(dimY)),interpolation=cv2.INTER_NEAREST)).astype('uint8')
+            imgs = np.expand_dims(imgs, axis=-1)
+
         #saving the intermediate arrays in a folder for future use
-        np.save(dir + "pp_data_train_"+pre_type+"_"+dimX+"x"+dimY+'/' + names +'/img' + str(n) + ".npy", mask_imgs)
+        np.save(dir + "pp_data_train_"+pre_type+"_"+dimX+"x"+dimY+'/' + names +'/img' + str(n) + ".npy", imgs)
         
 
 #Test files pre-processing
@@ -79,7 +86,9 @@ for names in test_files:
         if(pre_type == 'zero'):
             imgs = zero_padding(imgs)
         elif(pre_type == 'resize'):
-            imgs = np.expand_dims(resize(imgs, (dimX, dimY), mode='constant', preserve_range=True), axis=-1)
+            imgs = np.array(cv2.resize(imgs, (int(dimX), int(dimY)),interpolation=cv2.INTER_NEAREST)).astype('uint8')
+            imgs = np.expand_dims(imgs, axis=-1)
+
         #saving the intermediate arrays in a folder for future use
         np.save(dir + "pp_data_test_"+pre_type+"_"+dimX+"x"+dimY+'/' + names +'/img' + str(n) + ".npy", imgs)
     

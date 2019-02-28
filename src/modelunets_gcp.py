@@ -22,11 +22,12 @@ print('Found GPU at: {}'.format(device_name))
 
 
 dir = "/home/hemanthreg/dip-p2/"
-train_folder = dir+"pp_data_train_zero_640x640"
-test_folder = dir+"pp_data_test_zero_640x640"
-masks_folder = dir+"pp_masks_zero_640x640"
-dimX = 640 
-dimY = 640
+train_folder = dir+"pp_data_train_resize_512x512"
+test_folder = dir+"pp_data_test_resize_512x512"
+masks_folder = dir+"pp_masks_resize_512x512"
+dimX = 512
+dimY = 512
+
 
 def get_pp_images(train_folder,masks_folder,mask):
     folders = [f for f in os.listdir(train_folder) if not f.startswith('.')]
@@ -55,6 +56,12 @@ else:
 X_train = np.array(X_train)
 y_train = np.array(y_train)
 X_test = np.array(X_test)
+
+
+y_train_copy = y_train
+
+y_train[np.where(y_train < 2)] = 0 
+
 
 assert X_train.shape == y_train.shape
 assert len(X_train) == len(y_train)
@@ -159,11 +166,18 @@ if not os.path.isdir(dir+"output"):
 
 np.set_printoptions(threshold=np.nan)
 
+if not os.path.isdir(dir+"output"):
+    os.mkdir(dir+"output")
+
+from skimage.transform import resize
+    
 for n,file in enumerate(test_labels):
-  img = np.squeeze(preds_test[n])
-  img[np.where(img > 0.5)] = 2 
-  test_rec = [item for item in test_dimensions if item[0] == file]
-  dimX = test_rec[0][1][0]
-  dimY = test_rec[0][1][1]
-  img = img[:dimX,:dimY].astype(np.uint8)
-  imageio.imwrite(dir+'/output/'+file+'.png',img)
+    img = np.squeeze(preds_test[n])
+    img[np.where(img > 0.5)] = 2 
+    test_rec = [item for item in test_dimensions if item[0] == file]
+    dim_X = test_rec[0][1][0]
+    dim_Y = test_rec[0][1][1]
+    img1 = np.array(cv2.resize(img, (int(dim_X), int(dim_Y)),interpolation=cv2.INTER_NEAREST)).astype('uint8')
+    #img = img[:dimX,:dimY].astype(np.uint8)
+    cv2.imwrite(dir+'/output/'+file+'.png',img1)
+    
