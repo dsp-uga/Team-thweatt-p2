@@ -44,19 +44,25 @@ else:
 #else:
 #    print('Pre-processed testing set not available')
     
+    
+(X_train[0].shape)    
+    
 X_train = np.array(X_train)
 y_train = np.array(y_train)
 X_test = np.array(X_test)
 
 ##########################################
+from PIL import Image 
 
-img = X_train[9]
-msk = y_train[9]
+img = X_train[0]
+msk = y_train[0]
+msk = msk.convert('RGB') 
 
 cv2.imshow('img1',img)
 cv2.waitKey()
 cv2.destroyAllWindows()
 
+msk[np.where(msk != 2)] = 0
 cv2.imshow('msk',msk)
 cv2.waitKey()
 cv2.destroyAllWindows()
@@ -77,22 +83,112 @@ backtorgb = cv2.cvtColor(img,cv2.COLOR_GRAY2RGB)
 
 ##########################################
 
-
-
-
-
-# Create list of names here from my1.bmp up to my20.bmp
-list_names = ['my' + str(i+1) + '.bmp' for i in range(20)]
+import pandas as pd
+from sklearn import svm
+from sklearn.tree import DecisionTreeClassifier
 
 # Read in the first frame
-frame1 = cv2.imread(list_names[0])
-prvs = cv2.cvtColor(frame1,cv2.COLOR_BGR2GRAY)
+#frame1 = cv2.imread(X_train[0])
+prvs = X_train[0]
+
+#for i in range(1,len(X_train)):
+next = X_train[1]
+flow = cv2.calcOpticalFlowFarneback(prvs, next,None, 0.5, 3, 15, 3, 5, 1.2, 0)
+mag, ang = cv2.cartToPolar(flow[...,0], flow[...,1])
+angle = ang*180/np.pi/2
+magn = cv2.normalize(mag,None,0,255,cv2.NORM_MINMAX)
+print(np.amax(magn))
+
+
+angleC = angle.flatten()
+magnC = magn.flatten()
+maskC = msk.flatten()
+
+dict_new = {            
+'angle' : angleC,
+'mag' : magnC,
+'mask' : maskC
+}
+
+
+df = pd.DataFrame(dict_new)
+
+df['mask'] = df['mask'].astype('category')
+df_2 = df[df['mask']==255]
+df_1 = df[df['mask']==1]
+df_0 = df[df['mask']==0]
+
+df.describe()
+df_2.describe()
+df_1.describe()
+df_0.describe()
+
+
+x = df[['angle','mag']]
+y = df['mask']
+
+
+
+
+clf =  DecisionTreeClassifier(random_state=0)
+clf_fit = clf.fit(df[['angle','mag']],df['mask'])
+clf_fit.decision_path
+y_pred = clf.predict(x)
+
+from sklearn.metrics import confusion_matrix
+confusion_matrix(df['mask'],y_pred)
+
+from sklearn.tree import _tree
+def tree_to_code(tree, feature_names):
+    tree_ = tree.tree_
+    feature_name = [
+        feature_names[i] if i != _tree.TREE_UNDEFINED else "undefined!"
+        for i in tree_.feature
+    ]
+    print("def tree({}):".format(", ".join(feature_names)))
+
+    def recurse(node, depth):
+        indent = "  " * depth
+        if tree_.feature[node] != _tree.TREE_UNDEFINED:
+            name = feature_name[node]
+            threshold = tree_.threshold[node]
+            print("{}if {} <= {}:".format(indent, name, threshold))
+            recurse(tree_.children_left[node], depth + 1)
+            print("{}else:  # if {} > {}".format(indent, name, threshold))
+            recurse(tree_.children_right[node], depth + 1)
+        else:
+            print("{}return {}".format(indent, tree_.value[node]))
+
+    recurse(0, 1)
+
+tree_to_code(clf_fit,df.columns)
+
+
+
+from sklearn.externals.six import StringIO  
+from IPython.display import Image  
+from sklearn.tree import export_graphviz
+import pydotplus
+dot_data = StringIO()
+export_graphviz(dtree, out_file=dot_data,  
+                filled=True, rounded=True,
+                special_characters=True)
+graph = pydotplus.graph_from_dot_data(dot_data.getvalue())  
+Image(graph.create_png())
+
+
+dotfile = open("dt.dot", 'w')
+tree.export_graphviz(dt, out_file=dotfile, feature_names=iris.feature_names)
+dotfile.close()
+
+
+
 
 # Set counter to read the second frame at the start
 counter = 1
 
 # Until we reach the end of the list...
-while counter < len(list_names):
+while counter < len(X_train):
     # Read the next frame in
     frame2 = cv2.imread(list_names[counter])
     next = cv2.cvtColor(frame2,cv2.COLOR_BGR2GRAY)
