@@ -13,22 +13,19 @@ import os
 
 
 dir = "/Users/hemanth/Desktop/MSAI/DataSciencePracticum/Projects/p2/"
-train_folder = dir+"pp_data_train_zero_640x640"
+train_folder = dir+"pp_optical"
 test_folder = dir+"pp_data_test_zero_640x640"
-masks_folder = dir+"pp_masks_zero_640x640"
-dimX = 640 
-dimY = 640
-
+masks_folder = dir+"pp_optical_masks"
 
 def get_pp_images(train_folder,masks_folder,mask):
-    #folders = [f for f in os.listdir(train_folder) if not f.startswith('.')]
-    print(folders)
+    folders = [f for f in os.listdir(train_folder) if not f.startswith('.')]
     X_train = []
     y_train = []
-    for file in folders:
-        X_train.append(np.load(train_folder+'/'+file))
-        if(mask == True):
-            y_train.append(np.load(masks_folder+'/0be6e167cb8061767aefe5886ad729fc4274a649789b38ed2588e3a79c72d637.npy'))
+    for folder in folders:
+        for file in os.listdir(train_folder+'/'+folder):
+            X_train.append(np.load(train_folder+'/'+folder+'/'+file))
+            if(mask == True):
+                y_train.append(np.load(masks_folder+'/'+folder+'.npy'))
     if(mask == True):
         return X_train,y_train
     else:
@@ -37,15 +34,15 @@ def get_pp_images(train_folder,masks_folder,mask):
 
 #Reading train and masks
 if os.path.exists(train_folder) and os.path.exists(masks_folder):
-    X_train,y_train = get_pp_images(train_folder+'/0be6e167cb8061767aefe5886ad729fc4274a649789b38ed2588e3a79c72d637',masks_folder,mask = True)
+    X_train,y_train = get_pp_images(train_folder,masks_folder,mask = True)
 else:
     print('Pre-processed training/masks set not available')
     
 #Reading test images
-if os.path.exists(test_folder):
-    X_test = get_pp_images(test_folder,masks_folder,mask = False)
-else:
-    print('Pre-processed testing set not available')
+#if os.path.exists(test_folder):
+#    X_test = get_pp_images(test_folder,masks_folder,mask = False)
+#else:
+#    print('Pre-processed testing set not available')
     
 X_train = np.array(X_train)
 y_train = np.array(y_train)
