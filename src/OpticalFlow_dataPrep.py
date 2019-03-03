@@ -53,27 +53,18 @@ for names in train_files:
         
 
 #Test files pre-processing
-test_dimensions = []
 for names in test_files:
     img_file = tarfile.open(dir + "/data/" + names + ".tar")
-    extracted_img = img_file.getnames()[0:int(pics)]
-    if not os.path.isdir(dir+"pp_data_test_"+pre_type+"_"+dimX+"x"+dimY):
-        os.mkdir(dir+"pp_data_test_"+pre_type+"_"+dimX+"x"+dimY)
+    extracted_img = img_file.getnames()[0:pics]
+    if not os.path.isdir(dir+"pp_data_test"):
+        os.mkdir(dir+"pp_data_test")
     
-    os.mkdir(dir+"pp_data_test_"+pre_type+"_"+dimX+"x"+dimY+'/'+names)
+    os.mkdir(dir+"pp_data_test"+'/'+names)
     for n,img in enumerate(extracted_img):
         imgs = np.asarray(bytearray(img_file.extractfile(img).read()),dtype ="uint8")
         imgs = cv2.imdecode(imgs, cv2.IMREAD_GRAYSCALE)
-        original_size = imgs.shape
-        test_dimensions.append((names,original_size))        
-        if(pre_type == 'zero'):
-            imgs = zero_padding(imgs)
-        elif(pre_type == 'resize'):
-            imgs = np.array(cv2.resize(imgs, (int(dimX), int(dimY)),interpolation=cv2.INTER_NEAREST)).astype('uint8')
-            imgs = np.expand_dims(imgs, axis=-1)
-
+        if(pre_type == 'none'):
+            imgs = imgs
         #saving the intermediate arrays in a folder for future use
-        np.save(dir + "pp_data_test_"+pre_type+"_"+dimX+"x"+dimY+'/' + names +'/img' + str(n) + ".npy", imgs)
+        np.save(dir + "pp_data_test"+'/' + names +'/img' + str(n) + ".npy", imgs)
     
-with open(dir+'test_dimensions.pkl', 'wb') as f:
-    pickle.dump(test_dimensions, f)
