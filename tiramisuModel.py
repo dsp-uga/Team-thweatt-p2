@@ -1,21 +1,19 @@
 from __future__ import absolute_import
 from __future__ import print_function
 import os
-
-
 import keras.models as models
 from keras.layers.core import Layer, Dense, Dropout, Activation, Flatten, Reshape, Permute
 from keras.layers.convolutional import Conv2D, MaxPooling2D, UpSampling2D, Cropping2D
 from keras.layers.normalization import BatchNormalization
-
 from keras.layers import Conv2D, Conv2DTranspose
-
 from keras import backend as K
-
 import cv2
 import numpy as np
 import json
+
 #Implementation based on https://github.com/0bserver07/One-Hundred-Layers-Tiramisu
+
+
 K.set_image_dim_ordering('tf')
 # weight_decay = 0.0001
 from keras.regularizers import l2
