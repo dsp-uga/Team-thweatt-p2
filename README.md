@@ -7,7 +7,7 @@ This repository contains the project-2 of Data Science Practicum (CSCI 8360) cou
 
 
 
-Please refer to the [Wiki]() for more details on our approach.
+Please refer to the [Wiki](https://github.com/dsp-uga/Team-thweatt-p2/wiki) for more details on our approach.
 
 ## Getting Started 
 
