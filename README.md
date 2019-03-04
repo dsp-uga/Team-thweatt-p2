@@ -28,7 +28,7 @@ The following instructions will assist you get this project running on your loca
 - **Saed Rezayi**
 - **Abhishek Chatrath**
 
-See the [CONTRIBUTORS.md]() file for details.
+See the [CONTRIBUTORS.md](https://github.com/dsp-uga/Team-thweatt-p2/blob/master/CONTRIBUTORS.md) file for details.
 
 ## License
 
