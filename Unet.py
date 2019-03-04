@@ -2,6 +2,9 @@ import cv2
 import numpy as np
 import os
 
+#implementation based on https://github.com/dsp-uga/goucher/blob/master/src/preprocessing/preprocessor.py
+
+
 dir = "/Users/vishakhaatole/Desktop/DSP/proj2data"
 
 train_file = open(dir+"/"+"train.txt",)
