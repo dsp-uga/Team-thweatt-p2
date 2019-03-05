@@ -45,9 +45,13 @@ The following instructions will assist you get this project running on your loca
 
 ### Approach
 
-- **U-net**
-- **Random Forest**
-- **SVM**
+- [U-net](https://github.com/dsp-uga/Team-thweatt-p2/wiki/Model-Approaches)
+- [Random Forest](https://github.com/dsp-uga/Team-thweatt-p2/wiki/Model-Approaches)
+- [SVM](https://github.com/dsp-uga/Team-thweatt-p2/wiki/Model-Approaches)
+
+### Future Work
+- [Tiramisu](https://github.com/dsp-uga/Team-thweatt-p2/wiki/Model-Approaches)
+- [DenseNet](https://github.com/dsp-uga/Team-thweatt-p2/wiki/Model-Approaches)
 
 ## Contributing
 
