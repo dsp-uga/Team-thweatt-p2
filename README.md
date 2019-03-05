@@ -16,6 +16,12 @@ The following instructions will assist you get this project running on your loca
 
 
 
+## Contributing
+
+The `master` branch of this repo is write-protected.  Every pull request must pass a code review before being merged.
+Other than that, there are no specific guidelines for contributing.
+If you see something that can be improved, please send us a pull request!
+
 ## Authors
 (Ordered alphabetically)
 
