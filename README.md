@@ -17,7 +17,7 @@ The following instructions will assist you get this project running on your loca
 2. Tensorflow: <br />
     If you don't have it installed, [download Tensorflow here](https://www.tensorflow.org/install).
 
-3. Open Cv2: <br />
+3. Opencv: <br />
     `pip install opencv-python` 
 
 4. Pandas: <br />
@@ -33,6 +33,10 @@ The following instructions will assist you get this project running on your loca
 
 
 ### Approach
+
+- **U-net**
+- **Random Forest**
+- **SVM**
 
 ## Contributing
 
