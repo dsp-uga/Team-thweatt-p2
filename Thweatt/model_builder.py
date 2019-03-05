@@ -1,5 +1,6 @@
 import math
 import os
+import sys
 
 import cv2
 import scipy.misc
@@ -21,9 +22,9 @@ def load_data(base_dir, n_frames=30):
     :returns: array of training data, training labels, and test data.
     """
 
-    train_dir = base_dir + "pp_data_train"
-    test_dir = base_dir + "pp_data_test"
-    masks_folder = base_dir + "pp_masks"
+    train_dir = base_dir + "/pp_data_train"
+    test_dir = base_dir + "/pp_data_test"
+    masks_folder = base_dir + "/pp_masks"
 
     # Checking if the preprocessed train,test, and masks folders are
     # generated in the project directory
@@ -112,8 +113,8 @@ def model_predict(base_dir, X_test, trained_model):
     """
 
     # Creating output directory to write predictions
-    if not os.path.isdir(base_dir + "output"):
-        os.mkdir(base_dir + "output")
+    if not os.path.isdir(base_dir + "/output"):
+        os.mkdir(base_dir + "/output")
 
     feature_list = ['angle_of', 'mag_of', 'int_img', 'fft', 'var', 'mask']
     # Predicting for each test image and writing to output directory
@@ -128,4 +129,4 @@ def model_predict(base_dir, X_test, trained_model):
         y_pred_cut = np.where(y_pred[:, 1] > 0.40, 2, 0)
         pred_img = np.reshape(y_pred_cut, (dim_x, dim_y)).astype('uint8')
         scipy.misc.toimage(pred_img, cmin=0.0, cmax=...).\
-            save(base_dir + 'output/' + test_name + '.png')
+            save(base_dir + '/output/' + test_name + '.png')
