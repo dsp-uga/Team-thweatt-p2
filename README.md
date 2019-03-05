@@ -22,6 +22,8 @@ The following instructions will assist you get this project running on your loca
 
 5. Scikit learn
 
+6. [Google cloud platform](https://github.com/dsp-uga/Team-thweatt-p2/wiki/Google-Cloud-Platform-set-up)
+
 
 ### Running the tests
 
