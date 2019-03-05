@@ -58,7 +58,7 @@ Download the files into your project directory:
 - [DenseNet](https://github.com/dsp-uga/Team-thweatt-p2/wiki/Future-Work)
 
 ## Ethics
-This project can be used as a part of a bigger project to detect and identify affects of Cilia movement/changes that can be used for future Medical Research. This project was trained on Medical images and should only be used for detecting cilia movement from the video pipeline. 
+This project can be used as a part of a bigger project to detect and identify the effects of Cilia movement/changes that can be used for future Medical Research. This project was trained on Medical images and should only be used for detecting cilia movement from the video pipeline. 
 
 
 ## Contributing
