@@ -1,7 +1,7 @@
 # CSCI 8360 - Project 2 - Cilia Segmentation
 
-Thweatt is a project completed under the Data Science Practicum (CSCI 8360) course at the University of Georgia, Spring 2019.
-Attempts were made to to develop a video segmentation pipeline that identifies the regions of the videos containing cilia as accurately as possible.
+This project is implemented as a part of the Data Science Practicum (CSCI 8360) course at the University of Georgia, Spring 2019.
+The goal was to develop a video segmentation pipeline that identifies the regions of the videos containing cilia as accurately as possible.
 
 Please refer to the [Wiki](https://github.com/dsp-uga/Team-thweatt-p2/wiki) for more details on our approach.
 
@@ -29,17 +29,21 @@ The following instructions will assist you get this project running on your loca
 6. [Google cloud platform](https://github.com/dsp-uga/Team-thweatt-p2/wiki/Google-Cloud-Platform-set-up)
 
 
-### Exection Instructions:
+### Execution Instructions:
+The following data files are all available on GCP: gs://uga-dsp/project2.
+
+Download the files into your project directory:
+ 1. Train hashes : This file can be downloaded into your base directory using the following command
 
  `gsutil cp gs://uga-dsp/project2/train.txt base_dir`
-
+ 2. Test hashes: This file can be downloaded into your base directory using the following command
 
   `gsutil cp gs://uga-dsp/project2/test.txt base_dir`
 
-
+ 3. data folder: This file can be downloaded into your base directory using the following command
   `gsutil cp -r gs://uga-dsp/project2/data/* base_dir`
 
-
+ 4. masks folder: This file can be downloaded into your base directory using the following command
   `gsutil cp -r gs://uga-dsp/project2/masks/* base_dir`
 
 
