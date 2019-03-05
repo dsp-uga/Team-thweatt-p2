@@ -3,7 +3,6 @@ import cv2
 import os
 import requests
 import pickle
-from skimage.transform import resize
 import sys
 import tarfile
 
