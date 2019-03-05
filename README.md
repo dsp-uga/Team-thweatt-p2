@@ -3,7 +3,7 @@
 This project is implemented as a part of the Data Science Practicum (CSCI 8360) course at the University of Georgia, Spring 2019.
 The goal was to develop a video segmentation pipeline that identifies the regions of the videos containing cilia as accurately as possible.
 
-Please refer to the [Wiki](https://github.com/dsp-uga/Team-thweatt-p2/wiki) for more details on our approach.
+Please refer [Wiki](https://github.com/dsp-uga/Team-thweatt-p2/wiki) for more details on our approach.
 
 ## Getting Started 
 
