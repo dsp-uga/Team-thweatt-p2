@@ -22,9 +22,13 @@ The following instructions will assist you get this project running on your loca
 
     `pip install opencv-python` 
 
-4. Panda
+4. Pandas
 
-5. Scikit learn
+    `pip install panadas`
+
+5. Scikit-learn
+
+    `pip install scikit-learn`
 
 6. [Google cloud platform](https://github.com/dsp-uga/Team-thweatt-p2/wiki/Google-Cloud-Platform-set-up)
 
