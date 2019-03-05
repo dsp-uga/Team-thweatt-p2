@@ -9,7 +9,7 @@ Please refer to the [Wiki](https://github.com/dsp-uga/Team-thweatt-p2/wiki) for 
 
 The following instructions will assist you get this project running on your local machine for developing and testing purpose.
 
-### Prerequisites
+### Prerequisites:
 
 1. Python: <br />
     To install Python, go [here](https://www.python.org/downloads/)
@@ -29,7 +29,7 @@ The following instructions will assist you get this project running on your loca
 6. [Google cloud platform](https://github.com/dsp-uga/Team-thweatt-p2/wiki/Google-Cloud-Platform-set-up)
 
 
-### Running the code
+### Running the code:
 
  `gsutil cp gs://uga-dsp/project2/train.txt base_dir`
 
@@ -43,15 +43,19 @@ The following instructions will assist you get this project running on your loca
   `gsutil cp -r gs://uga-dsp/project2/masks/* base_dir`
 
 
-### Approach
+### Approach:
 
 - [U-net](https://github.com/dsp-uga/Team-thweatt-p2/wiki/Model-Approaches)
 - [Random Forest](https://github.com/dsp-uga/Team-thweatt-p2/wiki/Model-Approaches)
 - [SVM](https://github.com/dsp-uga/Team-thweatt-p2/wiki/Model-Approaches)
 
-### Future Work
+### Future Work:
 - [Tiramisu](https://github.com/dsp-uga/Team-thweatt-p2/wiki/Model-Approaches)
 - [DenseNet](https://github.com/dsp-uga/Team-thweatt-p2/wiki/Model-Approaches)
+
+## Ethics
+
+
 
 ## Contributing
 
