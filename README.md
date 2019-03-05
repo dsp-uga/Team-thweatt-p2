@@ -11,19 +11,19 @@ The following instructions will assist you get this project running on your loca
 
 ### Prerequisites
 
-1. Python
+1. Python: <br />
     To install Python, go [here](https://www.python.org/downloads/)
     
 2. Tensorflow: <br />
     If you don't have it installed, [download Tensorflow here](https://www.tensorflow.org/install).
 
-3. Open Cv2
+3. Open Cv2: <br />
     `pip install opencv-python` 
 
-4. Pandas
+4. Pandas: <br />
     `pip install panadas`
 
-5. Scikit-learn
+5. Scikit-learn: <br />
     `pip install scikit-learn`
 
 6. [Google cloud platform](https://github.com/dsp-uga/Team-thweatt-p2/wiki/Google-Cloud-Platform-set-up)
