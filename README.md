@@ -11,11 +11,7 @@ The following instructions will assist you get this project running on your loca
 
 ### Prerequisites:
 
-1. Java 8 JDK: <br />
-Make sure you have version 1.8.x <br /> 
-Type the following in the terminal : <br /> 
-`java -version` <br />
-If you don't have it installed, [download Java here](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) <br />
+1. Python
 
 2. Tensorflow: <br />
 If you don't have it installed, [download Tensorflow here]
@@ -34,7 +30,7 @@ https://www.tensorflow.org/install
 
 ## Contributing
 
-The `master` branch of this repo is write-protected.  Every pull request must pass a code review before being merged.
+The `master` branch of this repo is write-protected and every pull request must passes a code review before being merged.
 Other than that, there are no specific guidelines for contributing.
 If you see something that can be improved, please send us a pull request!
 
