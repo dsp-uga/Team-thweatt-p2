@@ -1,11 +1,7 @@
-# Team-thweatt-p2
-Cilia Segmentation
+# CSCI 8360 - Project 2 - Cilia Segmentation
 
-# Cilia Segmentation
-
-This repository contains the project-2 of Data Science Practicum (CSCI 8360) course at the University of Georgia, Spring 2019. 
-
-
+Thweatt is a project completed under the Data Science Practicum (CSCI 8360) course at the University of Georgia, Spring 2019.
+Attempts were made to to develop a video segmentation pipeline that identifies the regions of the videos containing cilia as accurately as possible.
 
 Please refer to the [Wiki](https://github.com/dsp-uga/Team-thweatt-p2/wiki) for more details on our approach.
 
