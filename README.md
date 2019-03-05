@@ -9,7 +9,7 @@ Please refer to the [Wiki](https://github.com/dsp-uga/Team-thweatt-p2/wiki) for 
 
 The following instructions will assist you get this project running on your local machine for developing and testing purpose.
 
-### Prerequisites:
+### Prerequisites
 
 1. Python
 
@@ -24,7 +24,7 @@ https://www.tensorflow.org/install
 5. Scikit learn
 
 
-### Running the tests:
+### Running the tests
 
 ### Approach
 
