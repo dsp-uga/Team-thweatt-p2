@@ -12,11 +12,13 @@ The following instructions will assist you get this project running on your loca
 ### Prerequisites
 
 1. Python
-
+    To install Python, go [here](https://www.python.org/downloads/)
+    
 2. Tensorflow: <br />
     If you don't have it installed, [download Tensorflow here](https://www.tensorflow.org/install).
 
 3. Open Cv2
+    pip install opencv-python 
 
 4. Panda
 
