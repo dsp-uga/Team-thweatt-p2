@@ -32,6 +32,15 @@ The following instructions will assist you get this project running on your loca
 ### Running the tests
 
 
+`gsutil cp gs://uga-dsp/project2/train.txt base_dir`
+
+`gsutil cp gs://uga-dsp/project2/train.txt base_dir`
+
+`gsutil cp -r gs://uga-dsp/project2/data/* base_dir`
+
+`gsutil cp -r gs://uga-dsp/project2/masks/* base_dir`
+
+
 ### Approach
 
 - **U-net**
