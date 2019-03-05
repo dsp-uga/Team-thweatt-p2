@@ -14,8 +14,7 @@ The following instructions will assist you get this project running on your loca
 1. Python
 
 2. Tensorflow: <br />
-    If you don't have it installed, [download Tensorflow here]
-    (https://www.tensorflow.org/install)
+    If you don't have it installed, [download Tensorflow here](https://www.tensorflow.org/install)
 
 3. Open Cv2
 
