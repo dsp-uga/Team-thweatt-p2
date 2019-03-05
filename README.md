@@ -20,7 +20,7 @@ The following instructions will assist you get this project running on your loca
 
 3. Open Cv2
 
-    pip install opencv-python 
+    `pip install opencv-python` 
 
 4. Panda
 
