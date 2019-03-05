@@ -18,20 +18,15 @@ Type the following in the terminal : <br />
 If you don't have it installed, [download Java here](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) <br />
 
 2. Tensorflow: <br />
-# Current release for CPU-only
-pip install tensorflow
-
-# Nightly build for CPU-only (unstable)
-pip install tf-nightly
-
-# GPU package for CUDA-enabled GPU cards
-pip install tensorflow-gpu
-
-# Nightly build with GPU support (unstable)
-pip install tf-nightly-gpu
-
 If you don't have it installed, [download Tensorflow here]
 https://www.tensorflow.org/install
+
+3. Open Cv2
+
+4. Panda
+
+5. Scikit learn
+
 
 ### Running the tests:
 
