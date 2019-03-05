@@ -15,6 +15,9 @@ import tensorflow as tf
 from keras.layers import *
 from keras.optimizers import *
 
+#https://github.com/jakeret/tf_unet
+#https://github.com/zhixuhao/unet
+
 device_name = tf.test.gpu_device_name()
 if device_name != '/device:GPU:0':
   raise SystemError('GPU device not found')
