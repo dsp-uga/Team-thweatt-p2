@@ -54,7 +54,7 @@ The following instructions will assist you get this project running on your loca
 - [DenseNet](https://github.com/dsp-uga/Team-thweatt-p2/wiki/Model-Approaches)
 
 ## Ethics
-
+This project can be used as a part of a bigger project to detect and identify affects of Cilia movement/changes that can be used for future Medical Research. This project was trained on Medical images and should only be used for detecting cilia movement from the video pipeline. 
 
 
 ## Contributing
