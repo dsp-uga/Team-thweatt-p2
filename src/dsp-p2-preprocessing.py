@@ -5,6 +5,7 @@ import requests
 import pickle
 from skimage.transform import resize
 import sys
+import tarfile
 
 pre_type = 'none'
 dimX = 640
@@ -73,6 +74,8 @@ for names in train_files:
         #Writing pre-processed train images to new folder 'pp_data_train'
         np.save(dir + "pp_data_train"+'/' + names +'/img' + str(n) + ".npy", imgs)
 
+#Initializing list to store original test dimensions
+test_dimensions = []
 
 #Test files pre-processing and also populating list of original image sizes for each test hash
 for names in test_files:
