@@ -29,16 +29,19 @@ The following instructions will assist you get this project running on your loca
 6. [Google cloud platform](https://github.com/dsp-uga/Team-thweatt-p2/wiki/Google-Cloud-Platform-set-up)
 
 
-### Running the tests
+### Running the code
 
 
-`gsutil cp gs://uga-dsp/project2/train.txt base_dir`
+        `gsutil cp gs://uga-dsp/project2/train.txt base_dir`
 
-`gsutil cp gs://uga-dsp/project2/train.txt base_dir`
 
-`gsutil cp -r gs://uga-dsp/project2/data/* base_dir`
+        `gsutil cp gs://uga-dsp/project2/train.txt base_dir`
 
-`gsutil cp -r gs://uga-dsp/project2/masks/* base_dir`
+
+        `gsutil cp -r gs://uga-dsp/project2/data/* base_dir`
+
+
+        `gsutil cp -r gs://uga-dsp/project2/masks/* base_dir`
 
 
 ### Approach
