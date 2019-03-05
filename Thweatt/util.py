@@ -69,7 +69,7 @@ def get_pp_images_test(test_folder):
     return X_test, y_test
 
 
-def get_features_train(X_train):
+def get_features_train(X_train, y_train):
     """ A function to create a dataframe containing the following features:
         - angle_of: movement angle derived from optical flow.
         - mag_of: movement magnitude derived from optical flow.
@@ -80,7 +80,8 @@ def get_features_train(X_train):
     Equal rate sampling technique is used to create a balanced feature set.
     It takes 25% of background pixels and 75% of cilia pixels.
 
-    :param X_train: entire array of training images.
+    :param X_train: array of training images.
+    :param y_train: array of training labels.
     :returns: a dataframe containing all features.
     """
 
