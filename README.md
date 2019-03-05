@@ -43,10 +43,11 @@ If you see something that can be improved, please send us a pull request!
 ## Authors
 (Ordered alphabetically)
 
-- **Hemanth Dandu** 
-- **Vishakha Atole** 
-- **Saed Rezayi**
 - **Abhishek Chatrath**
+- **Hemanth Dandu**
+- **Saed Rezayi**
+- **Vishakha Atole** 
+
 
 See the [CONTRIBUTORS.md](https://github.com/dsp-uga/Team-thweatt-p2/blob/master/CONTRIBUTORS.md) file for details.
 
