@@ -9,7 +9,7 @@ import os
 from util import zero_padding
 
 
-def load_train(train_file, base_dir, dim_x=640, dim_y=640, n_frames=30):
+def process_train(base_dir, dim_x=640, dim_y=640, n_frames=30, pre_type='none'):
     """A funciton to unzip, preprocess, and store training image files as numpy
     arrays.
 
@@ -24,7 +24,10 @@ def load_train(train_file, base_dir, dim_x=640, dim_y=640, n_frames=30):
     """
 
     # checking if the train_file exist, if not download it from GC bucket
-    train_files = open(train_file).read().split('\n')
+    if not os.path.isfile(base_dir + "/train.txt"):
+        err_msg = "train hashes missing, download it from dsp-uga bucket."
+        raise FileNotFoundError(err_msg)
+    train_files = open(base_dir + "/train.txt").read().split('\n')
 
     # Checking if the data and masks directories are present in the project
     # directory
@@ -51,19 +54,19 @@ def load_train(train_file, base_dir, dim_x=640, dim_y=640, n_frames=30):
             mask_imgs = np.expand_dims(mask_imgs, axis=-1)
 
         # Writing pre-processed images to new folder 'pp_masks'
-        if not os.path.isdir(base_dir + "pp_masks"):
-            os.mkdir(base_dir + "pp_masks")
-        np.save(base_dir + "pp_masks/" + file_name + ".npy", mask_imgs)
+        if not os.path.isdir(base_dir + "/pp_masks"):
+            os.mkdir(base_dir + "/pp_masks")
+        np.save(base_dir + "/pp_masks/" + file_name + ".npy", mask_imgs)
 
         # Preprocessing Train images
         extracted_img = img_file.getnames()[0:n_frames]
 
-        if not os.path.isdir(base_dir + "pp_data_train"):
-            os.mkdir(base_dir + "pp_data_train")
+        if not os.path.isdir(base_dir + "/pp_data_train"):
+            os.mkdir(base_dir + "/pp_data_train")
 
         # Creating directory for each individual training hash
-        if not os.path.isdir(base_dir + "pp_data_train"):
-            os.mkdir(base_dir + "pp_data_train/" + file_name)
+        if not os.path.isdir(base_dir + "/pp_data_train"):
+            os.mkdir(base_dir + "/pp_data_train/" + file_name)
 
         for n, img in enumerate(extracted_img):
             imgs = np.asarray(bytearray(img_file.extractfile(img).read()),
@@ -80,11 +83,11 @@ def load_train(train_file, base_dir, dim_x=640, dim_y=640, n_frames=30):
                 imgs = np.expand_dims(imgs, axis=-1)
 
             # Writing pre-processed train images to new folder 'pp_data_train'
-            np.save(base_dir + "pp_data_train/" + file_name + '/img' + str(n) +
+            np.save(base_dir + "/pp_data_train/" + file_name + '/img' + str(n) +
                     ".npy", imgs)
 
 
-def load_test(test_file, base_dir, dim_x=640, dim_y=640, n_frames=30):
+def process_test(base_dir, dim_x=640, dim_y=640, n_frames=30, pre_type='none'):
     """A funciton to unzip, preprocess, and store test image files as numpy arrays.
 
     :param test_file: a file containing test hashes
@@ -98,7 +101,10 @@ def load_test(test_file, base_dir, dim_x=640, dim_y=640, n_frames=30):
     """
 
     # checking if the test_file exist, if not download it from GC bucket
-    test_files = open(test_file).read().split('\n')
+    if not os.path.isfile(base_dir + "/test.txt"):
+        err_msg = "test hashes missing, download it from dsp-uga bucket."
+        raise FileNotFoundError(err_msg)
+    test_files = open(base_dir + "/test.txt").read().split('\n')
 
     # Checking if the data and masks directories are present in the project
     # directory
@@ -115,12 +121,12 @@ def load_test(test_file, base_dir, dim_x=640, dim_y=640, n_frames=30):
         extracted_img = img_file.getnames()[0:n_frames]
 
         # Creating directory to save test hashes
-        if not os.path.isdir(base_dir + "pp_data_test"):
-            os.mkdir(base_dir + "pp_data_test")
+        if not os.path.isdir(base_dir + "/pp_data_test"):
+            os.mkdir(base_dir + "/pp_data_test")
 
         # Creating directory for each individual training hash
-        if not os.path.isdir(base_dir + "pp_data_test"):
-            os.mkdir(base_dir + "pp_data_test/" + file_name)
+        if not os.path.isdir(base_dir + "/pp_data_test"):
+            os.mkdir(base_dir + "/pp_data_test/" + file_name)
 
         for n, img in enumerate(extracted_img):
             imgs = np.asarray(bytearray(img_file.extractfile(img).read()),
@@ -142,9 +148,9 @@ def load_test(test_file, base_dir, dim_x=640, dim_y=640, n_frames=30):
                 imgs = np.expand_dims(imgs, axis=-1)
 
             # Writing pre-processed test images to new folder 'pp_data_test'
-            np.save(base_dir + "pp_data_test/" + file_name + '/img' + str(n) +
-            	    ".npy", imgs)
+            np.save(base_dir + "/pp_data_test/" + file_name + '/img' + str(n) +
+                    ".npy", imgs)
 
     # Saving populated list of test hashes with original dimensions
-    with open(base_dir + 'test_dimensions.pkl', 'wb') as f:
+    with open(base_dir + '/test_dimensions.pkl', 'wb') as f:
         pickle.dump(test_dimensions, f)
