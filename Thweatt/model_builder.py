@@ -57,7 +57,7 @@ def load_data(base_dir, n_frames=30):
     X_test = np.array(X_test)
     X_test = np.reshape(X_test, (ntest, n_frames))
 
-    return X_train, y_train, X_test
+    return X_train, y_train, X_test, test_names
 
 
 def model_train(X_train, y_train, clf='rf'):
@@ -71,6 +71,7 @@ def model_train(X_train, y_train, clf='rf'):
     """
 
     # Finding features for training set
+    print("Extracting features from training images...")
     train_df = get_features_train(X_train, y_train)
 
     # Changing mask column to type category
@@ -98,12 +99,12 @@ def model_train(X_train, y_train, clf='rf'):
     else:
         raise ValueError("clf paramter must be 'rf' or 'svm', %s given." % clf)
 
-    print("training....")
+    print("training the classifier...")
     clf_fit = mdl.fit(x, y)
     return clf_fit
 
 
-def model_predict(base_dir, X_test, trained_model):
+def model_predict(base_dir, X_test, test_names trained_model):
     """ A function to make prediction on the test data
 
     :param base_dir: a directory where processed training images are saved.

@@ -4,6 +4,7 @@ import sys
 from preprocessing import process_train, process_test
 from model_builder import load_data, model_train, model_predict
 
+
 def main():
     """ Main function
     """
@@ -26,20 +27,24 @@ def main():
     n_frames = args.n_frames
     pre_type = args.pre_type
 
-    # Extracting, preprocessing, and saving training images and masks. 
+    # Extracting, preprocessing, and saving training images and masks.
+    print("processing training images...")
     process_train(base_dir, dim_x=dim_x, dim_y=dim_y, n_frames=n_frames, pre_type=pre_type)
 
-    # Extracting, preprocessing, and saving training images and masks. 
+    # Extracting, preprocessing, and saving training images and masks.
+    print("processing test images...")
     process_test(base_dir, dim_x=dim_x, dim_y=dim_y, n_frames=n_frames, pre_type=pre_type)
 
     # Loading data into variables
-    X_train, y_train, X_test = load_data(base_dir, n_frames=n_frames)
+    print("Loading data...")
+    X_train, y_train, X_test, test_names = load_data(base_dir, n_frames=n_frames)
 
     # Training the classifier
     fitted_model = model_train(X_train=X_train, y_train=y_train, clf=clf)
 
     # Predicting the results
-    model_predict(base_dir, X_test=X_test, trained_model=fitted_model)
+    model_predict(base_dir, X_test=X_test, test_names=test_names, trained_model=fitted_model)
+    print("prediction is done. Output masks are saved to %s/output/" % base_dir)
 
 if __name__ == '__main__':
     sys.exit(main())

@@ -9,7 +9,7 @@ import os
 from util import zero_padding
 
 
-def process_train(base_dir, dim_x=640, dim_y=640, n_frames=30, pre_type='none'):
+def process_train(base_dir, dim_x, dim_y, n_frames, pre_type='none'):
     """A funciton to unzip, preprocess, and store training image files as numpy
     arrays.
 
@@ -28,6 +28,7 @@ def process_train(base_dir, dim_x=640, dim_y=640, n_frames=30, pre_type='none'):
         err_msg = "train hashes missing, download it from dsp-uga bucket."
         raise FileNotFoundError(err_msg)
     train_files = open(base_dir + "/train.txt").read().split('\n')
+    train_files = [k for k in train_files if len(k)]
 
     # Checking if the data and masks directories are present in the project
     # directory
@@ -65,7 +66,7 @@ def process_train(base_dir, dim_x=640, dim_y=640, n_frames=30, pre_type='none'):
             os.mkdir(base_dir + "/pp_data_train")
 
         # Creating directory for each individual training hash
-        if not os.path.isdir(base_dir + "/pp_data_train"):
+        if not os.path.isdir(base_dir + "/pp_data_train" + file_name):
             os.mkdir(base_dir + "/pp_data_train/" + file_name)
 
         for n, img in enumerate(extracted_img):
@@ -83,8 +84,8 @@ def process_train(base_dir, dim_x=640, dim_y=640, n_frames=30, pre_type='none'):
                 imgs = np.expand_dims(imgs, axis=-1)
 
             # Writing pre-processed train images to new folder 'pp_data_train'
-            np.save(base_dir + "/pp_data_train/" + file_name + '/img' + str(n) +
-                    ".npy", imgs)
+            np.save(base_dir + "/pp_data_train/" + file_name + '/img' +
+                    str(n) + ".npy", imgs)
 
 
 def process_test(base_dir, dim_x=640, dim_y=640, n_frames=30, pre_type='none'):
@@ -105,6 +106,7 @@ def process_test(base_dir, dim_x=640, dim_y=640, n_frames=30, pre_type='none'):
         err_msg = "test hashes missing, download it from dsp-uga bucket."
         raise FileNotFoundError(err_msg)
     test_files = open(base_dir + "/test.txt").read().split('\n')
+    test_files = [k for k in test_files if len(k)]
 
     # Checking if the data and masks directories are present in the project
     # directory
@@ -125,7 +127,7 @@ def process_test(base_dir, dim_x=640, dim_y=640, n_frames=30, pre_type='none'):
             os.mkdir(base_dir + "/pp_data_test")
 
         # Creating directory for each individual training hash
-        if not os.path.isdir(base_dir + "/pp_data_test"):
+        if not os.path.isdir(base_dir + "/pp_data_test" + file_name):
             os.mkdir(base_dir + "/pp_data_test/" + file_name)
 
         for n, img in enumerate(extracted_img):
