@@ -4,8 +4,8 @@ with open("README.md", 'r') as fp:
 	long_description = fp.read()
 
 setuptools.setup(
-	name = "Thweatt-p1",
-	version = "1.0.0",
+	name = "thweatt",
+	version = "1.0.4",
 	author="Saed Rezayi, Hemanth Dandu, Vishakha Atole, Abhishek Chatrath",
 	author_email="saedr@uga.edu, hemanthme22@gmail.com, va45686@uga.edu, ac06389@uga.edu",
 	license='MIT',
