@@ -15,10 +15,11 @@
     - Implemented data pre-processing scripts
 
 - **Saed Rezayi** - [saedr](https://github.com/saedr)
-   - 
-   - 
-   - 
-   - 
+   - Implemented a U-net notebook 
+   - Made the code PEP8 compliant
+   - Cleaned and modularized the code
+   - Made a pip pacakge
+   - Contributed in documentation
    
 - **Vishakha Atole** - [vishcocity](https://github.com/vishcocity)
    - Data preprocessing script
