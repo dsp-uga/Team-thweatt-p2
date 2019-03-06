@@ -29,21 +29,12 @@ The following instructions will assist you get this project running on your loca
 6. [Google cloud platform](https://github.com/dsp-uga/Team-thweatt-p2/wiki/Google-Cloud-Platform-set-up)
 
 
-### Execution Instructions:
-The following data files are all available on GCP: "gs://uga-dsp/project2".
+### Data Preparation:
+The following data files/folders are all available on GCP bucket: `gs://uga-dsp/project2` <br />
+train.txt, test.txt, data directory, masks directory
 
-Download the files into your project directory:
- 1. Train hashes : This file can be downloaded into your base directory using the following command <br />
- `gsutil cp gs://uga-dsp/project2/train.txt base_dir`
- 
- 2. Test hashes: This file can be downloaded into your base directory using the following command <br />
-  `gsutil cp gs://uga-dsp/project2/test.txt base_dir`
-
- 3. data folder: This file can be downloaded into your base directory using the following command <br />
-  `gsutil cp -r gs://uga-dsp/project2/data/* base_dir`
-
- 4. masks folder: This file can be downloaded into your base directory using the following command
-  `gsutil cp -r gs://uga-dsp/project2/masks/* base_dir`
+Download these files into your project directory using gsutil:<br />
+`gsutil cp -r gs://uga-dsp/project2/* base_dir`
 
 
 ### Approach:
