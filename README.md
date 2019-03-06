@@ -31,9 +31,9 @@ The following instructions will assist you get this project running on your loca
 
 ### Data Preparation:
 The following data files/folders are all available on GCP bucket: `gs://uga-dsp/project2` <br />
-train.txt,test.txt,data directory,masks directory
+train.txt, test.txt, data directory, masks directory
 
-Download these files into your project directory using `gsutil`:<br />
+Download these files into your project directory using gsutil:<br />
 `gsutil cp -r gs://uga-dsp/project2/* base_dir`
 
 
