@@ -23,8 +23,9 @@
 - **Vishakha Atole** - [vishcocity](https://github.com/vishcocity)
    - Data preprocessing script
    - U-Nets implementation 
-   - Tiramisu 
-   - Readme
-   - Wiki
+   - Tiramisu (Researched and partially implemented)
+   - Updated Wiki and Readme
+   - Updated results to Autolab
+   
 
   
