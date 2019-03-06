@@ -36,6 +36,50 @@ train.txt, test.txt, data directory, masks directory
 Download these files into your project directory using gsutil:<br />
 `gsutil cp -r gs://uga-dsp/project2/* base_dir`
 
+### Run Instruction:
+You may install the package using `pip` as follows:
+
+`$ pip install --user -i https://test.pypi.org/simple/ thweatt`
+
+In this case you can import the package and call different methods as follows:
+
+`>>> import thweatt`
+
+`>>> thweatt.process_train(base_dir, dim_x=640, dim_y=640, n_frames=30, pre_type='none')`
+
+`>>> thweatt.process_test(base_dir, dim_x=640, dim_y=640, n_frames=30, pre_type='none')`
+
+`>>> X_train, y_train, X_test, test_names = thweatt.load_data(base_dir, n_frames=30)`
+
+`>>> fitted_model = thweatt.model_train(X_train=X_train, y_train=y_train, clf='rf')`
+
+`>>> thweatt.model_predict(base_dir, X_test=X_test, test_names=test_names, trained_model=fitted_model)`
+
+As a result of running the above code, output masks will be saved to base_dir/output/ directory.
+
+Alternatively, you can download the source code and simply run the following command:
+
+`$ python3 main.py --base_dir /path/to/project/directory/`
+
+List of command line arguments to pass to the program are as follows:
+
+	--base_dir: absolute project directory path.
+	--clf: type of classifier to use. Current choices are 'rf' and 'svm'.
+	--xdim: width of the images after preprocessing.
+	--ydim: length of the images after preprocessing.
+	--n_frames: number of the frames per video to consider.
+	--pre_type: type of preprocessing. Choices are 'none', 'resize', or 'zero'.
+
+The only reqired argument is the `base_dir` which is the directory containing `train_file`, `test_file`, `data\`, and `masks\`.
+
+The see the above list in command line execute the following command:
+
+`$ python3 main.py -h`
+
+One typical usage is:
+
+`$ python3 main.py --base_dir="../dataset/" --clf="rf" --xdim=640 --ydim=640 --n_frames=30 --pre_type="none"`
+
 
 ### Approach:
 
