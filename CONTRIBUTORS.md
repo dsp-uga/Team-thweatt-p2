@@ -21,9 +21,10 @@
    - 
    
 - **Vishakha Atole** - [vishcocity](https://github.com/vishcocity)
-   - 
-   - 
-   - 
-   - 
+   - Data preprocessing script
+   - U-Nets implementation 
+   - Tiramisu 
+   - Readme
+   - Wiki
 
   
