@@ -104,7 +104,7 @@ def model_train(X_train, y_train, clf='rf'):
     return clf_fit
 
 
-def model_predict(base_dir, X_test, test_names trained_model):
+def model_predict(base_dir, X_test, test_names, trained_model):
     """ A function to make prediction on the test data
 
     :param base_dir: a directory where processed training images are saved.
@@ -117,7 +117,7 @@ def model_predict(base_dir, X_test, test_names trained_model):
     if not os.path.isdir(base_dir + "/output"):
         os.mkdir(base_dir + "/output")
 
-    feature_list = ['angle_of', 'mag_of', 'int_img', 'fft', 'var', 'mask']
+    feature_list = ['angle_of', 'mag_of', 'int_img', 'fft', 'var']
     # Predicting for each test image and writing to output directory
     for i in range(len(X_test)):
         print("Predicting on test sample " + str(i + 1))
@@ -126,7 +126,7 @@ def model_predict(base_dir, X_test, test_names trained_model):
         dim_x = current_test[1].shape[0]
         dim_y = current_test[1].shape[1]
         test_df = get_features_test(current_test)
-        y_pred = clf_fit.predict_proba(test_df[feature_list])
+        y_pred = trained_model.predict_proba(test_df[feature_list])
         y_pred_cut = np.where(y_pred[:, 1] > 0.40, 2, 0)
         pred_img = np.reshape(y_pred_cut, (dim_x, dim_y)).astype('uint8')
         scipy.misc.toimage(pred_img, cmin=0.0, cmax=...).\
