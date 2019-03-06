@@ -2,10 +2,9 @@
 (Ordered alphabetically)
 
 - **Abhishek Chatrath** - [Chatrathabhishek](https://github.com/Chatrathabhishek)
-   - 
-   - 
-   - 
-   - 
+   - U-net Research
+   - Densenet Research
+   - Documentation in Wiki and Readme.md
    
 - **Hemanth Dandu** - [hemanthme22](https://github.com/hemanthme22)
     - 
