@@ -34,10 +34,9 @@ The following data files are all available on GCP: gs://uga-dsp/project2.
 
 Download the files into your project directory:
  1. Train hashes : This file can be downloaded into your base directory using the following command
-
  `gsutil cp gs://uga-dsp/project2/train.txt base_dir`
+ 
  2. Test hashes: This file can be downloaded into your base directory using the following command
-
   `gsutil cp gs://uga-dsp/project2/test.txt base_dir`
 
  3. data folder: This file can be downloaded into your base directory using the following command
