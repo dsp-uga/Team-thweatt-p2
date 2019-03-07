@@ -72,7 +72,7 @@ List of command line arguments to pass to the program are as follows:
 
 The only reqired argument is the `base_dir` which is the directory containing `train_file`, `test_file`, `data\`, and `masks\`.
 
-The see the above list in command line execute the following command:
+Then see the above list in command line to execute the following command:
 
 `$ python3 main.py -h`
 
